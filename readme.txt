@@ -5,3 +5,5 @@ JSON data are connected and read internally in JS.
 No external json file is used.
 Code was tested in local environment.
 Github and vercel hosting links are attached.
+Github: https://github.com/Ikramico/skill-test
+Vercel: https://skill-test-peach.vercel.app/

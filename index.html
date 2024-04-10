@@ -8,32 +8,37 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#05203c]">
-    <div class="flex-col p-3 relative">
-        <div class="from bg-gray-50 p-1 w-full rounded-t-xl overflow-hidden">
-            <p class="px-3 pt-2 text-xl">From</p>
+    <div>
+    <div class="flex-col lg:flex lg:flex-row p-3 relative">
+        <div class="from bg-gray-50 p-1 w-full rounded-t-xl lg:rounded-tr-[0] lg:rounded-bl-xl overflow-hidden lg:w-[60%] lg:mr-1">
+            <p class="px-3 pt-2 lg:text-sm text-xl">From</p>
             <input type="text" id="from search" class="pb-3 px-3 w-full  bg-gray-50">
             <ul id="sugs"></ul>
         </div>
-        <i class="fa-solid fa-right-left bg-gray-50 p-3 rounded-full absolute top-[20%] right-[30px] rotate-90 border-2 border-[#05203c]" onclick="swap()"></i>
-        <div class="from bg-gray-50 w-full mt-1 p-1">
-            <p class="px-3 pt-2 text-xl">To</p>
+        <i class="fa-solid fa-right-left bg-gray-50 p-3 rounded-full absolute top-[20%] right-[5%] rotate-90 lg:rotate-0 lg:right-[75%] lg:text-[12px] lg:p-2 lg:top-[40%] border-2 border-[#05203c]" onclick="swap()"></i>
+        <div class="from bg-gray-50 w-full  lg:mt-[0] mt-1 p-1 lg:w-[60%]">
+            <p class="px-3 pt-2 text-xl lg:text-sm">To</p>
             <input type="text" id="to search" class="pb-3 px-3 w-full  bg-gray-50">
             <ul id="sugs" class="bg-gray-50 w-1/2"></ul>
         </div>
-        <div class="flex items-center">
-            <div class="w-1/2 bg-gray-50  mt-1 p-1 rounded-bl-xl overflow-hidden">
-            <p class="px-3 pt-2 text-xl">Select Date</p>
+        <div class="flex items-center lg:mt-[0] lg:w-2/3">
+            <div class="w-1/2 bg-gray-50  mt-1 p-1 rounded-bl-xl overflow-hidden lg:rounded-bl-[0] lg:h-[100%] lg:mt-[0] lg:ml-1 ">
+            <p class="px-3 pt-2 text-xl lg:text-sm">Depart Date</p>
             <input type="date" id="date" class="pb-3 px-3 w-full  bg-gray-50">
         </div>
-        <div class="w-1/2 bg-gray-50 ml-1 rounded-br-xl overflow-hidden  mt-1 p-1">
-            <p class="px-3 pt-2 text-xl">Adult</p>
+        <div class="w-1/2 bg-gray-50  mt-1 p-1  hidden lg:inline ml-1 lg:rounded-bl-[0] lg:h-[100%] lg:mt-[0] lg:ml-1">
+            <p class="px-3 pt-2 text-xl lg:text-sm">Return Date</p>
+            <input type="date" id="date" class="pb-3 px-3 w-full  bg-gray-50">
+        </div>
+        <div class="w-1/2 bg-gray-50 ml-1 rounded-br-xl overflow-hidden  mt-1 p-1 lg:rounded-bl-[0] lg:h-[100%] lg:mt-[0] lg:ml-1 lg:rounded-tr-xl">
+            <p class="px-3 pt-2 text-xl lg:text-sm">Adult</p>
             <input type="number" id="adult" class="pb-3 px-3 w-full  bg-gray-50">
         </div>
         
         </div>
-        <button type="button" class="bg-[#024daf] mt-6 w-full py-2 rounded-xl font-bold text-gray-50 text-xl">Search</button>
+        <button type="button" class="bg-[#024daf] mt-6 w-full py-2 rounded-xl font-bold text-gray-50 text-xl lg:w-1/3 lg:text-lg lg:font-thin  lg:ml-2 lg:mt-[0]">Search</button>
     </div>
-    
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>
