@@ -31,8 +31,7 @@ let rtrn_ad = document.getElementById('calendar');
 let rtrn = document.getElementById('rtrn');
 dprt.addEventListener('click', () => {
    dprt_ad.classList.toggle('hidden');
-
-
+   
 });
 rtrn.addEventListener('click', () => {
   rtrn_ad.classList.toggle('hidden');
@@ -62,15 +61,18 @@ let data = [
 
 function checkData(input) {
 if (input == '') {
-  return [];
+  return null;
 }
-let reg = new RegExp(input);
+
+let furnishedInput =input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+let reg = new RegExp(furnishedInput, 'i');
+
 
 return data.filter((items)=>{
-  if(items.city.match(reg) || items.code.match(reg) || items.country.match(reg)){
+  if((items.city.toLowerCase()).match(reg) || (items.code.toLowerCase()).match(reg) || (items.country.toLowerCase()).match(reg)){
       return (items.city, items.code, items.country)
   }
-})
+});
 }
 
 
@@ -81,7 +83,7 @@ let list = '';
 let suggestions = checkData(val);
 for (i=0; i<suggestions.length; i++) {
   list += `<li><p>${suggestions[i].city} (${suggestions[i].code}) </p> 
-  ${suggestions[i].country}
+  <span class='font-semibold'> ${suggestions[i].country}</span>
   </li>`;
 }
 res.innerHTML = `<ul class='bg-gray-50 p-3'> ${list} </ul>`;
