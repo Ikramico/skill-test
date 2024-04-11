@@ -12,33 +12,33 @@
 <body>
     <div class="bg-[#05203c] py-10">
         <form autocomplete="off" class="lg:w-full"></form>
-        <div class="flex justify-center items-center">
+        <div class="flex flex-wrap lg:flex-nowrap justify-center items-center lg:p-3 lg:items-strech">
             
-            <div class="bg-gray-50 p-3 lg:rounded-tl-xl lg:rounded-bl-xl lg:mr-1 relative">
+            <div class="bg-gray-50 p-3 lg:rounded-tl-xl lg:rounded-bl-xl lg:mr-1 relative w-[45vh] lg:w-[auto] rounded-t-xl">
                 <p>From</p>
                 <input type="text" class="bg-gray-50" id="from">
                 <div class="absolute" id="sugs">
 
                 </div>
             </div>
-            <div class="bg-gray-50 p-3 lg:mr-1 relative">
+            <div class="bg-gray-50 p-3 lg:mr-1 relative mt-1 lg:mt-[0] w-[45vh] lg:w-[auto]" >
                 <p>To</p>
                 <input type="text" class="bg-gray-50" id="to">
                 <div class="absolute" id="sugs">
                     
                 </div>
             </div>
-            <div class="bg-gray-50 p-3 lg:mr-1 lg:w-40 relative" id="dprt">
+            <div class="bg-gray-50 p-3 lg:mr-1 lg:w-40 relative w-[21vh] lg:w-[auto] mt-1 lg:mt-[0] mr-1 rounded-bl-xl lg:rounded-bl-[0]" id="dprt">
                 <p>Depart</p>
                 <p>Add date</p>
                 <div id="calenda" class="absolute lg:right-[50px] lg:top-[110%] bg-gray-50 hidden"></div>
             </div>
-            <div class="bg-gray-50 p-3  lg:mr-1 lg:w-40 relative" id="rtrn">
+            <div class="bg-gray-50 p-3  lg:mr-1 lg:w-40 relative hidden lg:inline" id="rtrn">
                 <p>Return</p>
                 <p>Add date</p>
                 <div id="calendar" class="absolute lg:right-[50px] lg:top-[110%] bg-gray-50 hidden"></div>
             </div>
-            <div class="bg-gray-50 relative p-3 lg:mr-1 lg:rounded-br-xl lg:rounded-tr-xl" id="trvl">
+            <div class="bg-gray-50 relative p-3 lg:mr-1 lg:rounded-tr-xl mt-1 lg:mt-[0] rounded-br-xl" id="trvl">
                 <p>Travelers and Cabin class</p>
                 <p>1 adult, Economy</p>
                 <div class="absolute bg-gray-50 lg:top-[110%] p-3 left-0 rounded-lg hidden" id="trvl-dt">
@@ -72,8 +72,8 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-[#024daf]">
-                <button type="button" class="p-3 h-16 text-gray-50 rounded-lg">Search</button>
+            <div class="bg-[#024daf] mt-5 lg:mt-[0] rounded-xl lg:rounded-[0] overflow-hidden">
+                <button type="button" class="p-2 lg:p-5 h-[70px] text-gray-50 rounded-xl w-[45vh] lg:w-[auto]">Search</button>
             </div>
             
         </div></form>
