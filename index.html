@@ -3,42 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://kit.fontawesome.com/f2400ba2e7.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/vanilla-calendar-pro/build/vanilla-calendar.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-calendar-pro/build/vanilla-calendar.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/f2400ba2e7.js" crossorigin="anonymous"></script>
+    <title>Document</title>
 </head>
-<body class="bg-[#05203c]">
-    <div>
-    <div class="flex-col lg:flex lg:flex-row p-3 relative">
-        <div class="from bg-gray-50 p-1 w-full rounded-t-xl lg:rounded-tr-[0] lg:rounded-bl-xl overflow-hidden lg:w-[60%] lg:mr-1">
-            <p class="px-3 pt-2 lg:text-sm text-xl">From</p>
-            <input type="text" id="from search" class="pb-3 px-3 w-full  bg-gray-50">
-            <ul id="sugs"></ul>
-        </div>
-        <i class="fa-solid fa-right-left bg-gray-50 p-3 rounded-full absolute top-[20%] right-[5%] rotate-90 lg:rotate-0 lg:right-[75%] lg:text-[12px] lg:p-2 lg:top-[40%] border-2 border-[#05203c]" onclick="swap()"></i>
-        <div class="from bg-gray-50 w-full  lg:mt-[0] mt-1 p-1 lg:w-[60%]">
-            <p class="px-3 pt-2 text-xl lg:text-sm">To</p>
-            <input type="text" id="to search" class="pb-3 px-3 w-full  bg-gray-50">
-            <ul id="sugs" class="bg-gray-50 w-1/2"></ul>
-        </div>
-        <div class="flex items-center lg:mt-[0] lg:w-2/3">
-            <div class="w-1/2 bg-gray-50  mt-1 p-1 rounded-bl-xl overflow-hidden lg:rounded-bl-[0] lg:h-[100%] lg:mt-[0] lg:ml-1 ">
-            <p class="px-3 pt-2 text-xl lg:text-sm">Depart Date</p>
-            <input type="date" id="date" class="pb-3 px-3 w-full  bg-gray-50">
-        </div>
-        <div class="w-1/2 bg-gray-50  mt-1 p-1  hidden lg:inline ml-1 lg:rounded-bl-[0] lg:h-[100%] lg:mt-[0] lg:ml-1">
-            <p class="px-3 pt-2 text-xl lg:text-sm">Return Date</p>
-            <input type="date" id="date" class="pb-3 px-3 w-full  bg-gray-50">
-        </div>
-        <div class="w-1/2 bg-gray-50 ml-1 rounded-br-xl overflow-hidden  mt-1 p-1 lg:rounded-bl-[0] lg:h-[100%] lg:mt-[0] lg:ml-1 lg:rounded-tr-xl">
-            <p class="px-3 pt-2 text-xl lg:text-sm">Adult</p>
-            <input type="number" id="adult" class="pb-3 px-3 w-full  bg-gray-50">
-        </div>
-        
-        </div>
-        <button type="button" class="bg-[#024daf] mt-6 w-full py-2 rounded-xl font-bold text-gray-50 text-xl lg:w-1/3 lg:text-lg lg:font-thin  lg:ml-2 lg:mt-[0]">Search</button>
+<body>
+    <div class="bg-[#05203c] py-10">
+        <form autocomplete="off" class="lg:w-full"></form>
+        <div class="flex justify-center items-center">
+            
+            <div class="bg-gray-50 p-3 lg:rounded-tl-xl lg:rounded-bl-xl lg:mr-1 relative">
+                <p>From</p>
+                <input type="text" class="bg-gray-50" id="from">
+                <div class="absolute" id="sugs">
+
+                </div>
+            </div>
+            <div class="bg-gray-50 p-3 lg:mr-1 relative">
+                <p>To</p>
+                <input type="text" class="bg-gray-50" id="to">
+                <div class="absolute" id="sugs">
+                    
+                </div>
+            </div>
+            <div class="bg-gray-50 p-3 lg:mr-1 lg:w-40 relative" id="dprt">
+                <p>Depart</p>
+                <p>Add date</p>
+                <div id="calenda" class="absolute lg:right-[50px] lg:top-[110%] bg-gray-50 hidden"></div>
+            </div>
+            <div class="bg-gray-50 p-3  lg:mr-1 lg:w-40 relative" id="rtrn">
+                <p>Return</p>
+                <p>Add date</p>
+                <div id="calendar" class="absolute lg:right-[50px] lg:top-[110%] bg-gray-50 hidden"></div>
+            </div>
+            <div class="bg-gray-50 relative p-3 lg:mr-1 lg:rounded-br-xl lg:rounded-tr-xl" id="trvl">
+                <p>Travelers and Cabin class</p>
+                <p>1 adult, Economy</p>
+                <div class="absolute bg-gray-50 lg:top-[110%] p-3 left-0 rounded-lg hidden" id="trvl-dt">
+                    <h5>Cabin class</h5>
+                    <div class="flex">
+                        <div>
+                            <h5>Adults</h5>
+                            <p>Aged 16+</p>
+                        </div>
+                        <div>
+                            <span>-</span>
+                            <span>1</span>
+                            <span>+</span>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div>
+                            <h5>Children</h5>
+                            <p>Aged 0 to 15</p>
+                        </div>
+                        <div>
+                            <span>-</span>
+                            <span>0</span>
+                            <span>+</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Your age at time of travel must be valid for the age category booked. Airlines have restrictions on under 18s travelling alone.
+
+                            Age limits and policies for travelling with children may vary so please check with the airline before booking.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-[#024daf]">
+                <button type="button" class="p-3 h-16 text-gray-50 rounded-lg">Search</button>
+            </div>
+            
+        </div></form>
     </div>
-    </div>
+
     <script src="./script.js"></script>
 </body>
 </html>

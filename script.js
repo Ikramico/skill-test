@@ -1,4 +1,55 @@
-let data = [{"city":"Brisbane","code":"BNE","country":"Australia"},
+//calendar with vanillaclendar pro
+const options = {
+  type: 'multiple',
+  months: 2,
+  jumpMonths: 2,
+  settings: {
+    range: {
+      disablePast: true,
+    },
+    selection: {
+      day: 'multiple-ranged',
+    },
+    visibility: {
+      theme: 'light',
+      daysOutside: false,
+    },
+  },
+};
+document.addEventListener('DOMContentLoaded', () => {
+  const calendar = new VanillaCalendar('#calendar',options);
+  calendar.init();
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const calendar = new VanillaCalendar('#calenda',options);
+  calendar.init();
+});
+
+let dprt = document.getElementById('dprt');
+let dprt_ad = document.getElementById('calenda');
+let rtrn_ad = document.getElementById('calendar');
+let rtrn = document.getElementById('rtrn');
+dprt.addEventListener('click', () => {
+   dprt_ad.classList.toggle('hidden');
+
+
+});
+rtrn.addEventListener('click', () => {
+  rtrn_ad.classList.toggle('hidden');
+});
+
+
+//travel details
+let showTrvl = document.getElementById('trvl');
+let trvl_dt = document.getElementById('trvl-dt');
+
+showTrvl.addEventListener('click', () => {
+  trvl_dt.classList.toggle('hidden');
+});
+
+//search suggestions integration
+let data = [
+{"city":"Brisbane","code":"BNE","country":"Australia"},
 {"city":"Bali (Denpasar)","code":"DPS","country":"Indonesia"},
 {"city":"Barcelona","code":"BCN","country":"S pain"},
 {"city":"Bangkok Suvarnabhumi","code":"BKK","country":"Thailand"},
@@ -6,53 +57,41 @@ let data = [{"city":"Brisbane","code":"BNE","country":"Australia"},
 {"city":"Budapest","code":"BUD","country":" Hungary"},
 {"city":"Cairns","code":"CNS","country":"Australia"},
 {"city":"Copenhagen","code":"CP H","country":"Denmark"},
-{"city":"Cairo","code":"CAI","country":"Egypt"}]
+{"city":"Cairo","code":"CAI","country":"Egypt"}
+]
 
+function checkData(input) {
+if (input == '') {
+  return [];
+}
+let reg = new RegExp(input);
 
-
-//for swaping values
-
-function swap() {
-    let fromInput = document.querySelector('#from');
-    let toInput = document.querySelector('#to');
-    let temp = fromInput.value;
-    fromInput.value = toInput.value;
-    toInput.value = temp;
+return data.filter((items)=>{
+  if(items.city.match(reg) || items.code.match(reg) || items.country.match(reg)){
+      return (items.city, items.code, items.country)
   }
-
-
-//filter out data
-function filterData(input) {
-    let filteredData = input.filter((item) =>{
-      return (
-        city = item.city,
-        code = item.code,
-        country = item.country
-      )
-    });
-    return filteredData;
-  };
-
-  //function for showing data
-  function showData(input) {
-    let dataList = document.getElementById('sugs');
-    dataList.innerHTML = '';
-  
-    let filteredData = filterData(input);
-    filteredData.forEach((item)=> {
-      let li = document.createElement('li');
-      li.innerHTML = `
-      <div class='bg-gray-50'
-      <p class=' text-gray-500 '>${item.city} (${item.code}) </p>
-      <p class=' text-gray-500 '> ${item.country}</p>
-      `;
-      dataList.appendChild(li);
-    })
+})
 }
 
-//adding event listener
-document.getElementById('search').addEventListener('input', (event)=> {
-    let inputValue = event.target.value;
-    filterData(inputValue);
-  });
-  
+
+
+//   return data.filter((term) => {
+// 	  if (term.match(reg)) {
+//   	  return term;
+// 	  }
+//   });
+
+
+function showResults(val) {
+res = document.getElementById("sugs");
+res.innerHTML = '';
+let list = '';
+let suggestions = checkData(val);
+for (i=0; i<suggestions.length; i++) {
+  list += `<li><p>${suggestions[i].city} (${suggestions[i].code}) </p> 
+  ${suggestions[i].country}
+  </li>`;
+}
+res.innerHTML = `<ul> ${list} </ul>`;
+}
+
