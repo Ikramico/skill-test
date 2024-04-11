@@ -51,7 +51,7 @@ showTrvl.addEventListener('click', () => {
 let data = [
 {"city":"Brisbane","code":"BNE","country":"Australia"},
 {"city":"Bali (Denpasar)","code":"DPS","country":"Indonesia"},
-{"city":"Barcelona","code":"BCN","country":"S pain"},
+{"city":"Barcelona","code":"BCN","country":"Spain"},
 {"city":"Bangkok Suvarnabhumi","code":"BKK","country":"Thailand"},
 {"city":"Berlin Brandenburg","code":"BER","country":"Germany"},
 {"city":"Budapest","code":"BUD","country":" Hungary"},
@@ -74,14 +74,6 @@ return data.filter((items)=>{
 }
 
 
-
-//   return data.filter((term) => {
-// 	  if (term.match(reg)) {
-//   	  return term;
-// 	  }
-//   });
-
-
 function showResults(val) {
 res = document.getElementById("sugs");
 res.innerHTML = '';
@@ -92,6 +84,6 @@ for (i=0; i<suggestions.length; i++) {
   ${suggestions[i].country}
   </li>`;
 }
-res.innerHTML = `<ul> ${list} </ul>`;
+res.innerHTML = `<ul class='bg-gray-50 p-3'> ${list} </ul>`;
 }
 
