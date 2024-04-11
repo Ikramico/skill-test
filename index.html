@@ -12,7 +12,7 @@
 <body>
     <div class="bg-[#05203c] py-10">
         <form autocomplete="off" class="lg:w-full"></form>
-        <div class="flex flex-wrap lg:flex-nowrap justify-center items-center lg:p-3 lg:items-strech">
+        <div class="flex flex-wrap lg:flex-nowrap relative  justify-center items-center lg:p-3 lg:items-strech">
             
             <div class="bg-white p-3 lg:rounded-tl-xl lg:rounded-bl-xl lg:mr-1 relative w-[45vh] lg:w-[auto] rounded-t-xl lg:rounded-tr-[0]">
                 <p>From</p>
@@ -21,6 +21,7 @@
 
                 </div>
             </div>
+            <i class="fa-solid fa-right-left absolute text-black z-50 rounded-full border-[#05203c] border border-2  bg-white text-sm px-2  lg:right-[78.5%] lg:top-[45%]" onclick="swap()"></i>
             <div class="bg-white p-3 lg:mr-1 relative mt-1 lg:mt-[0] w-[45vh] lg:w-[auto]" >
                 <p>To</p>
                 <input type="text" class="bg-white" id="to" onKeyUp="showResults(this.value)">

@@ -1,3 +1,13 @@
+//swaping field values
+
+function swap() {
+  let fromInput = document.querySelector('#from');
+  let toInput = document.querySelector('#to');
+  let temp = fromInput.value;
+  fromInput.value = toInput.value;
+  toInput.value = temp;
+}
+
 //calendar with vanillaclendar pro
 const options = {
   type: 'multiple',
