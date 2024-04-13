@@ -11,48 +11,54 @@
 </head>
 <body class="bg-[#05203c]">
     <div class="bg-[#05203c] py-10">
-        <form autocomplete="off" class="lg:w-full"></form>
-        <div class="flex flex-wrap lg:flex-nowrap relative  justify-center items-center lg:p-3 lg:items-strech">
+        <form autocomplete="off" class="md:w-full"></form>
+        <div class="flex flex-wrap md:flex-nowrap relative  justify-center items-center md:p-3 md:items-strech">
             
-            <div class="bg-white p-3 lg:rounded-tl-xl lg:rounded-bl-xl lg:mr-1 relative w-[45vh] lg:w-[auto] rounded-t-xl lg:rounded-tr-[0]">
+            <div class="bg-white p-3 md:rounded-tl-xl md:rounded-bl-xl md:mr-1 relative w-[45vh] md:w-[auto] rounded-t-xl md:rounded-tr-[0]">
                 <p class="font-semibold text-gray-600">From</p>
-                <input type="text" class="bg-white" id="from" onKeyUp="showResults(this.value)" placeholder="Town, city or airport">
+                <input type="text" class="bg-white" id="from inpu" onKeyUp="showResults(this.value)" placeholder="Town, city or airport">
                 <div class="absolute mt-4 rounded-xl" id="sugs">
 
                 </div>
             </div>
-            <i class="fa-solid fa-right-left absolute text-black z-50 rounded-full border-[#05203c] border border-2  bg-white text-sm p-2 lg:px-2 top-[17%] right-[5%] rotate-90 lg:rotate-0 lg:right-[78.5%] lg:p-0 lg:top-[45%]" onclick="swap()"></i>
-            <div class="bg-white p-3 lg:mr-1 relative mt-1 lg:mt-[0] w-[45vh] lg:w-[auto]" >
+            
+            <div class="bg-white p-3 md:mr-1 relative mt-1 md:mt-[0] w-[45vh] md:w-[auto]" >
                 <p class="font-semibold text-gray-600">To</p>
-                <input type="text" class="bg-white" id="to" onKeyUp="showResults(this.value)" placeholder="Town, city or airport">
-                <div class="absolute" id="sugs">
+                <input type="text" class="bg-white" id="to inp" onKeyUp="suggestResults(this.value)" placeholder="Town, city or airport">
+                <div class="absolute" id="suggs">
                     
                 </div>
+                <i class="fa-solid fa-right-left absolute text-black z-50 rounded-full border-[#05203c] border border-2  bg-white text-sm p-2 md:px-2 top-[17%] rotate-90 md:rotate-0 md:left-[-1vw] md:p-0 md:top-[45%]" onclick="swap()"></i>
             </div>
-            <div class="bg-white p-3 lg:mr-1 lg:w-[20%] relative w-[20vh] lg:w-40 mt-1 lg:mt-[0] mr-1 rounded-bl-xl lg:rounded-bl-[0]" id="dprt">
+            <div class="bg-white p-3 md:mr-1 md:w-[20%] relative w-[20vh] md:w-40 mt-1 md:mt-[0] mr-1 rounded-bl-xl md:rounded-bl-[0]" id="dprt">
                 <p class="font-semibold text-gray-600">Depart</p>
                 <p class="font-thin text-gray-600">Add date</p>
-                <div id="calenda" class="absolute lg:left-[0px] lg:top-[110%] bg-white hidden"></div>
+                <div id="calenda" class="absolute md:left-[0px] md:top-[110%] bg-white hidden"></div>
             </div>
-            <div class="bg-white p-3  lg:mr-1 lg:w-[20%] relative hidden lg:inline" id="rtrn">
+            <div class="bg-white p-3  md:mr-1 md:w-[20%] relative hidden md:inline" id="rtrn">
                 <p class="font-semibold text-gray-600">Return</p>
                 <p class="font-thin text-gray-600">Add date</p>
-                <div id="calendar" class="absolute lg:left-[0px] lg:top-[110%] bg-white hidden"></div>
+                <div id="calendar" class="absolute md:left-[0px] md:top-[110%] bg-white hidden"></div>
             </div>
-            <div class="bg-white relative p-3 lg:mr-1 lg:rounded-tr-xl mt-1 lg:w-[30%] lg:mt-[0] rounded-br-xl" id="trvl">
-                <p class="font-semibold text-gray-600">Travelers and Cabin class</p>
+            <div class="bg-white relative p-3 md:mr-1 md:rounded-tr-xl mt-1 md:w-[30%] md:mt-[0] rounded-br-xl" >
+                <div id="trvl" class="peer">
+                                    <p class="font-semibold text-gray-600">Travelers and Cabin class</p>
                 <p class="font-thin text-black">1 adult, Economy</p>
-                <div class="absolute bg-white hidden lg:top-[110%] p-3 left-0 rounded-lg " id="trvl-dt">
+                </div>
+
+                <div class="absolute bg-white peer:hidden md:top-[110%] p-3 left-0 rounded-md hidden" id="trvl-dt">
                     <h5 class="font-bold text-black text-sm">Cabin class</h5>
                     <div class="flex mt-5 justify-between items-center">
                         <div>
                             <h5 class="font-bold text-black text-sm">Adults</h5>
                             <p class="font-semibold text-gray-600 text-sm">Aged 16+</p>
                         </div>
-                        <div>
-                            <span onclick="dec()" class="bg-gray-300 text-gray-400 px-2 py-1 rounded-lg">-</span>
+                        <div class="relative"> 
+                            <span onclick="dec()" class="bg-gray-300 text-gray-400 px-2 py-1 rounded-md">-</span>
                             <span id="amount">1</span>
-                            <span onclick="inc()" class="bg-gray-300 text-black px-2 py-1 rounded-lg">+</span>
+                            
+                            <span onclick="inc()" class="bg-gray-300 text-black px-2 py-1 rounded-md">+</span><br>
+                            <span id="out" class="text-red-700 absolute w-40 right-[5px] text-sm "></span>
                         </div>
                     </div>
                     <div class="flex mt-5 justify-between items-center">
@@ -60,10 +66,11 @@
                             <h5 class="font-bold text-black text-sm">Children</h5>
                             <p class="font-semibold text-gray-600 text-sm">Aged 0 to 15</p>
                         </div>
-                        <div>
-                            <span onclick="dec()" class="bg-gray-300 text-gray-400 px-2 py-1 rounded-lg">-</span>
-                            <span>0</span>
-                            <span onclick="inc()" class="bg-gray-300 text-black px-2 py-1 rounded-lg">+</span>
+                        <div class="relative">
+                            <span onclick="dec2()" class="bg-gray-300 text-gray-400 px-2 py-1 rounded-md">-</span>
+                            <span id="amount2">0</span>
+                            <span onclick="inc2()" class="bg-gray-300 text-black px-2 py-1 rounded-md">+</span>
+                            <span id="out2" class="text-red-700 absolute w-40 right-[5px] text-sm bottom-[-25px]"></span>
                         </div>
                     </div>
                     <div class="mt-5">
@@ -73,8 +80,8 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-[#024daf] mt-5 lg:mt-[0] rounded-xl lg:w-[14%] overflow-hidden">
-                <button type="button" class="p-2 lg:p-5 h-[70px] text-center text-gray-50 rounded-xl w-[45vh] lg:w-[auto]">Search</button>
+            <div class="bg-[#024daf] mt-5 md:mt-[0] rounded-xl md:w-[14%] overflow-hidden">
+                <button type="button" class="p-2 md:p-5 h-[70px] text-center text-gray-50 rounded-xl w-[45vh] md:w-[auto]">Search</button>
             </div>
             
         </div></form>

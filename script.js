@@ -68,6 +68,8 @@ let data = [
 {"city":"Copenhagen","code":"CP H","country":"Denmark"},
 {"city":"Cairo","code":"CAI","country":"Egypt"}
 ]
+let inp = document.getElementById('inp');
+let inpu = document.getElementById('inpu');
 
 function checkData(input) {
 if (input == '') {
@@ -92,10 +94,88 @@ res.innerHTML = '';
 let list = '';
 let suggestions = checkData(val);
 for (i=0; i<suggestions.length; i++) {
-  list += `<li><p>${suggestions[i].city} (${suggestions[i].code}) </p> 
+  list += `<li onclick='inputVal(${i})>
+  <p>${suggestions[i].city} (${suggestions[i].code}) </p> 
   <span class='font-semibold'> ${suggestions[i].country}</span>
   </li>`;
 }
 res.innerHTML = `<ul class='bg-gray-50 p-3'> ${list} </ul>`;
 }
 
+function checkedData(input) {
+  if (input == '') {
+    return null;
+  }
+  
+  let furnishedInput =input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  let reg = new RegExp(furnishedInput, 'i');
+  
+  
+  return data.filter((items)=>{
+    if((items.city.toLowerCase()).match(reg) || (items.code.toLowerCase()).match(reg) || (items.country.toLowerCase()).match(reg)){
+        return (items.city, items.code, items.country)
+    }
+  });
+  }
+  
+  
+  function suggsestResults(val) {
+  res = document.getElementById("suggs");
+  res.innerHTML = '';
+  let list = '';
+  let suggestions = checkData(val);
+  for (i=0; i<suggestions.length; i++) {
+    list += `<li onclick='inputVal(${i})>
+    <p>${suggestions[i].city} (${suggestions[i].code}) </p> 
+    <span class='font-semibold'> ${suggestions[i].country}</span>
+    </li>`;
+  }
+  res.innerHTML = `<ul class='bg-gray-50 p-3'> ${list} </ul>`;
+  }
+//show value on input box on clicking suggestions
+function  inputVal(index){
+inp.value =  `${index.city} (${index.code}), ${index.country} `;
+}
+
+
+
+//increase decrease amount value
+let amo = document.getElementById('amount');
+let out = document.getElementById('out');
+let decAmo = parseInt(amo.innerText);
+
+let amo2 = document.getElementById('amount2');
+let out2 = document.getElementById('out2');
+let decAmo2 = parseInt(amo2.innerText);
+
+function dec(){
+if (decAmo<2 ){
+  out.innerText = `You can't make less`;
+}
+ else{ decAmo = decAmo-1; 
+amo.innerText = `${decAmo}`
+} 
+}
+function inc(){
+  decAmo = decAmo+1;
+  amo.innerText = `${decAmo}`
+  if(decAmo>1){
+    out.innerText = ''
+  }
+}
+
+function dec2(){
+  if (decAmo2<1 ){
+    out2.innerText = `You can't make less`;
+  }
+   else{ decAmo2 = decAmo2-1; 
+  amo2.innerText = `${decAmo2}`
+  } 
+  }
+  function inc2(){
+    decAmo2 = decAmo2+1;
+    amo2.innerText = `${decAmo2}`
+    if(decAmo2>0){
+      out2.innerText = ''
+    }
+  }
