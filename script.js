@@ -1,8 +1,7 @@
 //swaping field values
-
-function swap() {
-  let fromInput = document.querySelector('#from');
+let fromInput = document.querySelector('#from');
   let toInput = document.querySelector('#to');
+function swap() {
   let temp = fromInput.value;
   fromInput.value = toInput.value;
   toInput.value = temp;
@@ -68,8 +67,7 @@ let data = [
 {"city":"Copenhagen","code":"CP H","country":"Denmark"},
 {"city":"Cairo","code":"CAI","country":"Egypt"}
 ]
-let inp = document.getElementById('inp');
-let inpu = document.getElementById('inpu');
+
 
 function checkData(input) {
 if (input == '') {
@@ -94,7 +92,7 @@ res.innerHTML = '';
 let list = '';
 let suggestions = checkData(val);
 for (i=0; i<suggestions.length; i++) {
-  list += `<li onclick='inputVal(${i})>
+  list += `<li onclick='inputV(${i})>
   <p>${suggestions[i].city} (${suggestions[i].code}) </p> 
   <span class='font-semibold'> ${suggestions[i].country}</span>
   </li>`;
@@ -123,7 +121,7 @@ function checkedData(input) {
   res = document.getElementById("suggs");
   res.innerHTML = '';
   let list = '';
-  let suggestions = checkData(val);
+  let suggestions = checkedData(val);
   for (i=0; i<suggestions.length; i++) {
     list += `<li onclick='inputVal(${i})>
     <p>${suggestions[i].city} (${suggestions[i].code}) </p> 
@@ -134,8 +132,11 @@ function checkedData(input) {
   }
 //show value on input box on clicking suggestions
 function  inputVal(index){
-inp.value =  `${index.city} (${index.code}), ${index.country} `;
+toInput.value =  `${data[index].city} (${data[index].code}), ${data[index].country} `;
 }
+function inputV(index){
+  fromInput.value =  `${data[index].city} (${data[index].code}), ${data[index].country} `;
+  }
 
 
 
