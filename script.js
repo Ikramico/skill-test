@@ -1,14 +1,33 @@
 //swaping field values
-let fromInput = document.querySelector('#from');
-  let toInput = document.querySelector('#to');
+let fromInput,toInput;
+  let depart = document.getElementById('date-d');
+  let retrn = document.getElementById('date-r');
 function swap() {
+   fromInput = document.getElementById('from')
+
+   toInput = document.getElementById('to');
   let temp = fromInput.value;
+  console.log(temp)
   fromInput.value = toInput.value;
   toInput.value = temp;
 }
 
 //calendar with vanillaclendar pro
+let flag=0
 const options = {
+  actions: {
+    clickDay(event, self) {
+      if(typeof depart.innerText !='date'&& flag==0 ){
+        depart.innerText =(self.selectedDates);
+        flag=1
+      }
+      else if( flag==1){
+        flag=0;
+        retrn.innerText = (self.selectedDates);
+      }
+    },
+    
+  },
   type: 'multiple',
   months: 2,
   jumpMonths: 2,
@@ -16,9 +35,7 @@ const options = {
     range: {
       disablePast: true,
     },
-    selection: {
-      day: 'multiple-ranged',
-    },
+    
     visibility: {
       theme: 'light',
       daysOutside: false,
@@ -26,24 +43,20 @@ const options = {
   },
 };
 document.addEventListener('DOMContentLoaded', () => {
-  const calendar = new VanillaCalendar('#calendar',options);
-  calendar.init();
-});
-document.addEventListener('DOMContentLoaded', () => {
   const calendar = new VanillaCalendar('#calenda',options);
   calendar.init();
 });
 
 let dprt = document.getElementById('dprt');
 let dprt_ad = document.getElementById('calenda');
-let rtrn_ad = document.getElementById('calendar');
+// let rtrn_ad = document.getElementById('calendar');
 let rtrn = document.getElementById('rtrn');
 dprt.addEventListener('click', () => {
    dprt_ad.classList.toggle('hidden');
    
 });
 rtrn.addEventListener('click', () => {
-  rtrn_ad.classList.toggle('hidden');
+  dprt_ad.classList.toggle('hidden');
 });
 
 
@@ -85,18 +98,20 @@ return data.filter((items)=>{
 });
 }
 
+let suggest = [];
 
 function showResults(val) {
 res = document.getElementById("sugs");
 res.innerHTML = '';
 let list = '';
 let suggestions = checkData(val);
-for (i=0; i<suggestions.length; i++) {
-  list += `<li onclick='inputV(${i})>
-  <p>${suggestions[i].city} (${suggestions[i].code}) </p> 
-  <span class='font-semibold'> ${suggestions[i].country}</span>
+
+suggestions.forEach((i)=> {
+  list += `<li onclick='inputV(${data.indexOf(i)})'>
+  <p>${i.city} (${i.code}) </p> 
+  <span class='font-semibold'> ${i.country}</span>
   </li>`;
-}
+})
 res.innerHTML = `<ul class='bg-gray-50 p-3'> ${list} </ul>`;
 }
 
@@ -117,25 +132,31 @@ function checkedData(input) {
   }
   
   
-  function suggsestResults(val) {
+  function suggestResults(val) {
   res = document.getElementById("suggs");
   res.innerHTML = '';
   let list = '';
   let suggestions = checkedData(val);
-  for (i=0; i<suggestions.length; i++) {
-    list += `<li onclick='inputVal(${i})>
-    <p>${suggestions[i].city} (${suggestions[i].code}) </p> 
-    <span class='font-semibold'> ${suggestions[i].country}</span>
+
+  suggestions.forEach((i)=> {
+    list += `<li onclick='inputVal(${data.indexOf(i)})'>
+    <p>${i.city} (${i.code}) </p> 
+    <span class='font-semibold'> ${i.country}</span>
     </li>`;
-  }
+  })
   res.innerHTML = `<ul class='bg-gray-50 p-3'> ${list} </ul>`;
+  
   }
 //show value on input box on clicking suggestions
-function  inputVal(index){
-toInput.value =  `${data[index].city} (${data[index].code}), ${data[index].country} `;
+function inputVal(i){
+   toInput = document.getElementById('to');
+   toInput.value= `${data[i].city} (${data[i].code}), ${data[i].country}`;
+   
+// toInput.value =  suggest.forEach((item)=>`${item[index].city} (${item[index].code}), ${item[index].country} ` );
 }
-function inputV(index){
-  fromInput.value =  `${data[index].city} (${data[index].code}), ${data[index].country} `;
+function inputV(i){
+  fromInput = document.getElementById('from');
+  fromInput.value = `${data[i].city} (${data[i].code}), ${data[i].country}`;
   }
 
 

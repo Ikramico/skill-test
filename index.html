@@ -11,12 +11,12 @@
 </head>
 <body class="bg-[#05203c]">
     <div class="bg-[#05203c] py-10 px-3">
-        <form autocomplete="off" class="lg:w-full"></form>
+        <form autocomplete="off" class="lg:w-full">
         <div class="flex flex-wrap lg:flex-nowrap relative  justify-center items-center lg:p-3 lg:items-strech">
             
             <div class="bg-white p-3 lg:rounded-tl-xl lg:rounded-bl-xl lg:mr-1 relative w-[92vw] lg:w-[auto] rounded-t-xl lg:rounded-tr-[0]">
                 <p class="font-semibold text-gray-600">From</p>
-                <input type="text" class="bg-white" id="from inpu" value="" onKeyUp="showResults(this.value)" placeholder="Town, city or airport">
+                <input type="text" class="bg-white focus:outline-none" id="from" value="" onKeyUp="showResults(this.value)" placeholder="Town, city or airport">
                 <div class="absolute mt-4 rounded-xl" id="sugs">
 
                 </div>
@@ -24,22 +24,21 @@
             
             <div class="bg-white p-3 lg:mr-1 relative mt-1 lg:mt-[0] w-[92vw] lg:w-[auto] pl-5" >
                 <p class="font-semibold text-gray-600">To</p>
-                <input type="text" class="bg-white" id="to inp" value="" onKeyUp="suggestResults(this.value)" placeholder="Town, city or airport">
+                <input type="text" class="bg-white focus:outline-none" id="to" value="" onKeyUp="suggestResults(this.value)" placeholder="Town, city or airport">
                 <div class="absolute mt-4 rounded-xl" id="suggs">
                     
                 </div>
                 <i class="fa-solid fa-right-left absolute text-black z-50 rounded-full border-[#05203c] border border-2  bg-white text-sm p-2 lg:px-2 top-[-20px] rotate-90 lg:rotate-0 lg:right-[94%] lg:p-0 lg:top-[45%] right-2" onclick="swap()"></i>
             </div>
-            <div class="bg-white p-3 lg:mr-1 relative w-[46vw] lg:w-40 mt-1 lg:mt-[0] mr-1 rounded-bl-xl lg:rounded-bl-[0]" id="dprt">
-                <p class="font-semibold text-gray-600">Depart</p>
-                <p class="font-thin text-gray-600 text-nowrap">Add date</p>
-                <div id="calenda" class="absolute lg:left-[0px] lg:top-[110%] bg-white"></div>
+            <div class="bg-white p-3 lg:mr-1  w-[46vw] lg:w-40 mt-1 lg:mt-[0] mr-1 rounded-bl-xl lg:rounded-bl-[0]" id="dprt">
+                <p class="font-semibold text-gray-600 ">Depart</p>
+                <p class="font-thin text-gray-600 text-nowrap" id="date-d">Add date</p>
             </div>
-            <div class="bg-white p-3  lg:mr-1 lg:w-[20%] relative hidden lg:inline" id="rtrn">
+            <div class="bg-white p-3  lg:mr-1 lg:w-[20%] hidden lg:inline" id="rtrn">
                 <p class="font-semibold text-gray-600">Return</p>
-                <p class="font-thin text-gray-600 text-nowrap">Add date</p>
-                <div id="calendar" class="absolute lg:left-[0px] lg:top-[110%] bg-white hidden"></div>
+                <p class="font-thin text-gray-600 text-nowrap" id="date-r">Add date</p>
             </div>
+            <div id="calenda" class="absolute w-[50%] top-[75%] left-3 lg:left-[0px] lg:top-[100%] lg:left-[30%] bg-white hidden"></div>
             <div class="bg-white relative p-3 w-[45vw] lg:mr-1 lg:rounded-tr-xl mt-1 md:w-[45.5vw] lg:w-[auto] lg:mt-[0] rounded-br-xl " >
                 <div id="trvl" class="peer">
                                     <p class="font-semibold text-gray-600 text-nowrap">
@@ -87,6 +86,7 @@
             
             
         </div>
+        </form>
     </div>
 
     <script src="./script.js"></script>
