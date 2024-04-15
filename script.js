@@ -112,7 +112,7 @@ suggestions.forEach((i)=> {
   <span class='font-semibold'> ${i.country}</span>
   </li>`;
 })
-res.innerHTML = `<ul class='bg-gray-50 p-3'> ${list} </ul>`;
+res.innerHTML = `<ul class='bg-gray-50 p-3' id='suggestList' onclick='hider()'> ${list} </ul>`;
 }
 
 function checkedData(input) {
@@ -144,7 +144,7 @@ function checkedData(input) {
     <span class='font-semibold'> ${i.country}</span>
     </li>`;
   })
-  res.innerHTML = `<ul class='bg-gray-50 p-3'> ${list} </ul>`;
+  res.innerHTML = `<ul class='bg-gray-50 p-3' id='suggestedList' onclick='hide()'> ${list} </ul>`;
   
   }
 //show value on input box on clicking suggestions
@@ -159,9 +159,20 @@ function inputV(i){
   fromInput.value = `${data[i].city} (${data[i].code}), ${data[i].country}`;
   }
 
+  //hide suggestions
+  function hide(){
+    let hideItem = document.getElementById('suggestedList');
+    hideItem.classList.add('hidden')
+  }
+  function hider(){
+    let hideItem = document.getElementById('suggestList');
+    hideItem.classList.add('hidden')
+  }
+
 
 
 //increase decrease amount value
+let pass = document.getElementById('pass')
 let amo = document.getElementById('amount');
 let out = document.getElementById('out');
 let decAmo = parseInt(amo.innerText);
@@ -176,11 +187,13 @@ if (decAmo<2 ){
 }
  else{ decAmo = decAmo-1; 
 amo.innerText = `${decAmo}`
+pass.innerText = `${decAmo}`;
 } 
 }
 function inc(){
   decAmo = decAmo+1;
   amo.innerText = `${decAmo}`
+  pass.innerText = `${decAmo}`
   if(decAmo>1){
     out.innerText = ''
   }

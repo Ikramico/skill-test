@@ -17,15 +17,15 @@
             <div class="bg-white p-3 lg:rounded-tl-xl lg:rounded-bl-xl lg:mr-1 relative w-[92vw] lg:w-[auto] rounded-t-xl lg:rounded-tr-[0]">
                 <p class="font-semibold text-gray-600">From</p>
                 <input type="text" class="bg-white focus:outline-none" id="from" value="" onKeyUp="showResults(this.value)" placeholder="Town, city or airport">
-                <div class="absolute mt-4 rounded-xl" id="sugs">
+                <div class="absolute z-50 mt-4 rounded-xl" onclick="hide()" id="sugs">
 
-                </div>
+                </div> 
             </div>
             
             <div class="bg-white p-3 lg:mr-1 relative mt-1 lg:mt-[0] w-[92vw] lg:w-[auto] pl-5" >
                 <p class="font-semibold text-gray-600">To</p>
                 <input type="text" class="bg-white focus:outline-none" id="to" value="" onKeyUp="suggestResults(this.value)" placeholder="Town, city or airport">
-                <div class="absolute mt-4 rounded-xl" id="suggs">
+                <div class="absolute z-50 mt-4 rounded-xl" id="suggs">
                     
                 </div>
                 <i class="fa-solid fa-right-left absolute text-black z-50 rounded-full border-[#05203c] border border-2  bg-white text-sm p-2 lg:px-2 top-[-20px] rotate-90 lg:rotate-0 lg:right-[94%] lg:p-0 lg:top-[45%] right-2" onclick="swap()"></i>
@@ -44,7 +44,7 @@
                                     <p class="font-semibold text-gray-600 text-nowrap">
                                         <span class="hidden lg:inline">Travelers and Cabin class </span>
                                          <span class="lg:hidden">Person</span></p>
-                <p class="font-thin text-black text-nowrap ">1 adult,<span class="hidden lg:inline">Economy </span> </p>
+                <p class="font-thin text-black text-nowrap "><span id="pass">1</span> adult,<span class="hidden lg:inline">Economy </span> </p>
                 </div>
 
                 <div class="absolute bg-white peer:hidden lg:top-[110%] p-3 left-0 rounded-lg hidden" id="trvl-dt">
